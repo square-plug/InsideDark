@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scr/Monster.gd" type="Script" id=1]
+[ext_resource path="res://assets/audio/whispers.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/audio/monster_growl.wav" type="AudioStream" id=3]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.7
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_transparent = true
+albedo_color = Color( 0.458824, 0.309804, 0.309804, 0.572549 )
+
+[sub_resource type="CapsuleMesh" id=3]
+material = SubResource( 2 )
+radius = 0.65
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.737255, 0.109804, 0.109804, 1 )
+emission_enabled = true
+emission = Color( 0.670588, 0.572549, 0.572549, 1 )
+emission_energy = 2.36
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="SphereMesh" id=5]
+material = SubResource( 4 )
+
+[sub_resource type="CapsuleShape" id=6]
+radius = 0.8
+
+[node name="Monster" type="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.15256e-07, 0 )
+collision_layer = 8
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0.00043273, 1.26142, 0.00423509 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 1.26142, 0 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="Eyes" type="Spatial" parent="MeshInstance"]
+
+[node name="MeshInstance" type="MeshInstance" parent="MeshInstance/Eyes"]
+transform = Transform( 0.012, 0, 0, 0, 0.012, 0, 0, 0, 0.012, -0.236194, -0.596276, -0.673384 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="MeshInstance/Eyes"]
+transform = Transform( 0.012, 0, 0, 0, 0.012, 0, 0, 0, 0.012, 0.233809, -0.598036, -0.673384 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="HitboxArea" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="HitboxArea"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 1.22047, 0 )
+shape = SubResource( 6 )
+
+[node name="Whisper" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 2 )
+autoplay = true
+
+[node name="Growl" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 3 )
