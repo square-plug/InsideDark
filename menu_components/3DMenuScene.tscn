@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scr/tiles_new.meshlib" type="MeshLibrary" id=1]
+[ext_resource path="res://scr/FlashingLight.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Environment" id=1]
+background_mode = 1
+background_energy = 3.0
+ambient_light_color = Color( 0.196078, 0.196078, 0.196078, 1 )
+ambient_light_energy = 3.0
+
+[node name="3DMenuScene" type="Spatial"]
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( 0, 65531, 0, 1, 65531, 0, 2, 65531, 0, 3, 65531, 0, 4, 65531, 0, 5, 65531, -1610612736, 6, 65531, -1610612736, 0, 65532, -1610612736, 1, 65532, 1, 2, 65532, 0, 3, 65532, 1, 4, 65532, -1610612735, 5, 65532, 1, 6, 65532, 0, 0, 65533, 536870912, 1, 65533, 1, 2, 65533, -1610612736, 3, 65533, 536870912, 4, 65533, 536870912, 5, 65533, 1, 6, 65533, 536870912, 0, 65534, 0, 1, 65534, 1, 2, 65534, -1610612735, 3, 65534, 1, 4, 65534, 1, 5, 65534, -1073741823, 6, 65534, 0, 0, 65535, -1610612736, 1, 65535, 0, 2, 65535, 536870912, 3, 65535, 0, 4, 65535, 0, 5, 65535, 0, 6, 65535, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0
+}
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.868308, -0.19191, 0.457397, -0.0669873, 0.868308, 0.491481, -0.491481, -0.457397, 0.741103, 11, 6, -2 )
+fov = 58.9944
+
+[node name="FlashingLight" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.258819, -0.965926, -1.60156e-07, -0.25, -0.0669875, 0.965926, -0.933013, -0.25, -0.258819, 2.29574, 3.18776, -3.51909 )
+
+[node name="FlashingLight4" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.258819, -0.965926, -1.59639e-07, -0.25, -0.0669875, 0.965926, -0.933013, -0.25, -0.258819, 8.32778, 3.18776, -8.97577 )
+
+[node name="FlashingLight2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.258819, -0.965926, -1.55026e-07, -0.25, -0.0669875, 0.965926, -0.933013, -0.25, -0.258819, 11, 5.10338, -4.40788 )
+
+[node name="FlashingLight3" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.258819, -0.965926, -1.55543e-07, -0.25, -0.0669875, 0.965926, -0.933013, -0.25, -0.258819, 8, 3.99232, -3 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
